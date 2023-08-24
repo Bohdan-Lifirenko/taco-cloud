@@ -12,6 +12,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import sia.tacocloud.data.interfaces.OrderRepository;
 import sia.tacocloud.models.TacoOrder;
 
+import java.util.Date;
+
 @Slf4j
 @Controller
 @RequestMapping("/orders")
@@ -40,6 +42,8 @@ public class OrderController {
         }
 
 //        log.info("Order submitted: {}", order);
+
+        order.setPlacedAt(new Date());
 
         orderRepository.save(order);
         sessionStatus.setComplete();
